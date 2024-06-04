@@ -1,9 +1,9 @@
+/* eslint-disable no-unused-vars */
 import { createSlice } from "@reduxjs/toolkit";
 
-/* eslint-disable no-unused-vars */
-const toogeltSlise = createSlice({
+const toogeltSlice = createSlice({
   name: "toogel",
-  initialState: { Popp: false, Type: "", Or: "" },
+  initialState: { Popp: false, Type: "", Or: "", login: false },
   reducers: {
     toogel: (state) => {
       return { ...state, Popp: !state.Popp };
@@ -14,10 +14,11 @@ const toogeltSlise = createSlice({
     Or: (state, action) => {
       return { ...state, Or: action.payload };
     },
-    // deleteFromwishlist: (state, action) => {},
-    // clearwishlist: (state, action) => {},
+    login: (state) => {
+      return { ...state, login: !state.login }; // تصحيح هنا
+    },
   },
 });
-export const { toogel, Type, Or } = toogeltSlise.actions;
+export const { toogel, Type, Or, login } = toogeltSlice.actions;
 
-export default toogeltSlise.reducer;
+export default toogeltSlice.reducer;

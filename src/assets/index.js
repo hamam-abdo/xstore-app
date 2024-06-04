@@ -57,7 +57,8 @@ import contact_Icon2 from "./contact_Icon2.webp";
 import contact_Icon3 from "./contact_Icon3.webp";
 import Map from "./Map.webp";
 import Cart_Popp from "./Cart_Popp.svg";
-import delet from "./delet.gif"
+import delet from "./delet.gif";
+import Accunt from "./Accunt.svg";
 export {
   Logo,
   Seva,
@@ -118,5 +119,6 @@ export {
   contact_Icon3,
   Map,
   Cart_Popp,
-  delet
+  delet,
+  Accunt,
 };

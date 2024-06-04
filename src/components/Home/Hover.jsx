@@ -2,9 +2,11 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { IoIosStar } from "react-icons/io";
-import { useDispatch , useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../store/cart";
 import { toogel, Type, Or } from "../../store/toogel";
+import notify from "../../ReactToastify";
+
 function Hover({ text, show }) {
   const Dispatch = useDispatch();
   const Products = useSelector((state) => state.Products);
@@ -21,11 +23,13 @@ function Hover({ text, show }) {
         return "bottom-12 -right-[75px] sm:-right-[110px]  after:border-t-white after:-bottom-[16px] after:left-1/2 after:translate-x-[-30%]";
     }
   };
+
   const handleHeartClick = (item) => {
     Dispatch(addToCart({ item, quantity: 1 })),
       Dispatch(toogel()),
       Dispatch(Type("Cart")),
       Dispatch(Or("Cart"));
+    notify(item);
   };
   return (
     show && (

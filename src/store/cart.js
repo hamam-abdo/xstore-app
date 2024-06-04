@@ -1,13 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 /* eslint-disable no-unused-vars */
 
 const cartSlise = createSlice({
   name: "cart",
-
   initialState: [],
   reducers: {
-    
-
     addToCart: (state, action) => {
       const find = state.find(
         (product) => product.id === action.payload.item.id
@@ -32,6 +30,5 @@ const cartSlise = createSlice({
     },
   },
 });
-export const { addToCart, deleteFromCart, clearCarts } =
-  cartSlise.actions;
+export const { addToCart, deleteFromCart, clearCarts } = cartSlise.actions;
 export default cartSlise.reducer;

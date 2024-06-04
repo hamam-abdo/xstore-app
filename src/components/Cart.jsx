@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { delet } from "../assets";
 import { deleteFromCart, clearCarts } from "../store/cart";
 import { deleteFromwishlist, clearwishlist } from "../store/wishlist";
+import { Link } from "react-router-dom";
+import { toogel } from "../store/toogel";
+
 function Cart({ img, text, state }) {
   const Or = useSelector((state) => state.toogle.Or);
   const Dispatch = useDispatch();
@@ -21,6 +24,13 @@ function Cart({ img, text, state }) {
     const action = Or === "Cart" ? clearCarts : clearwishlist;
     Dispatch(action());
   };
+
+
+
+  const handleClick = () => {
+    Dispatch(toogel());
+  };
+
   return (
     <>
       <div className=" mb-4  text-center ">
@@ -54,9 +64,13 @@ function Cart({ img, text, state }) {
                     </div>
 
                     <div className="  pt-5 pr-6  overflow-hidden  flex-1  text-left relative ">
-                      <h1 className="truncate  duration-[0.4s]  text-max_color  cursor-pointer  hover:text-[#888] sm:text-[17px] font-medium  ">
+                      <Link
+                        to={`/shop/PorductID/${Podcast.id}`}
+                        onClick={() => handleClick()}
+                        className="truncate block  duration-[0.4s]  text-max_color  cursor-pointer  hover:text-[#888] sm:text-[17px] font-medium  "
+                      >
                         {Podcast.title}
-                      </h1>
+                      </Link>
 
                       <p className=" my-1 sm:my-2">
                         {Or === "Cart" ? (

@@ -10,14 +10,14 @@ import Contact from "./components/Contact";
 import Popp from "./components/Popp";
 import Cart from "./components/Cart";
 import Item from "./components/Item";
-
 import { useSelector } from "react-redux";
-import { Cart_Popp, Seva } from "./assets";
+import { Cart_Popp, Seva, Accunt } from "./assets";
 import Filter from "./components/Filter";
 import FilterShop from "./components/FilterShop";
 import FilterBlog from "./components/FilterBlog";
-
 import PorductDetlails from "./components/PorductDetlails";
+import { ToastContainer } from "react-toastify";
+import Account from "./components/Account";
 function App() {
   const state = useSelector((state) => state.toogle.Type);
   const Or = useSelector((state) => state.toogle.Or);
@@ -38,7 +38,7 @@ function App() {
   return (
     <>
       <Navbar />
-
+      <ToastContainer hideProgressBar />
       <Routes>
         <Route index element={<Home />} />
         <Route path="/Home" element={<Home />} />
@@ -61,15 +61,18 @@ function App() {
       <Popp>
         {state == "Cart" ? (
           Or == "Cart" ? (
-            <Cart img={Cart_Popp} text={"Shopping Cart"} state={cart} />
+            <>
+              <Cart img={Cart_Popp} text={"Shopping Cart"} state={cart} />
+            </>
           ) : (
             <Cart img={Seva} text={"My Wishlist "} state={wishlist} />
           )
+        ) : state == "Accunt" ? (
+          <Account img={Accunt} text={" Sign In "} />
         ) : (
           <Item id={state} />
         )}
       </Popp>
-
       <Footer />
     </>
   );

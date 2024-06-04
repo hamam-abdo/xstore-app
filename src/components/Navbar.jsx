@@ -4,15 +4,15 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { navLinks } from "../constants";
-import { Logo, Seva, cart_i } from "../assets";
+import { Logo, Seva, cart_i, Accunt } from "../assets";
 import { useSelector, useDispatch } from "react-redux";
-import { toogel, Type, Or } from "../store/toogel";
+import { toogel, Type, Or, login } from "../store/toogel";
 
 function Navbar() {
   const Dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const wishlist = useSelector((state) => state.wishlist);
-
+  const logins = useSelector((state) => state.toogle.login);
   const totalPrice = cart.reduce((acc, product) => {
     acc += product.prices * product.quantity;
     return acc;
@@ -51,7 +51,7 @@ function Navbar() {
       <nav className=" flex items-center justify-between py-5 container ">
         <img src={Logo} alt="Logo" className=" w-[115px]" />
         <ul className="  hidden md:flex">{Links}</ul>
-        <ul className=" flex items-center gap-3">
+        <ul className=" flex items-center gap-2 lg:gap-3">
           <li>
             <a className="relative">
               <span className=" absolute text-xs -top-1 z-10 -right-2  w-4 h-4 rounded-full bg-[#e1e1e1] flex items-center justify-center">
@@ -68,6 +68,27 @@ function Navbar() {
                 className="   w-5 duration-[0.4s] hover:opacity-70  cursor-pointer"
               />
             </a>
+          </li>
+          <li>
+            <div className="flex gap-1 font-medium">
+              <img
+                onClick={() => {
+                  if (localStorage.loggedInEmail) {
+                    Dispatch(login());
+                    localStorage.removeItem("loggedInEmail");
+                  } else {
+                    Dispatch(toogel());
+                    Dispatch(Type("Accunt"));
+                  }
+                }}
+                src={Accunt}
+                alt="Accunt"
+                className="w-5 duration-[0.4s] hover:opacity-70 cursor-pointer"
+              />
+              <span className="hidden md:block text-sm">
+                {localStorage.loggedInEmail ? "Sign Out" : "Sign In"}
+              </span>
+            </div>
           </li>
           <li>
             <a

@@ -10,7 +10,6 @@ import { IoIosStar } from "react-icons/io";
 import { LuEye, LuMinus, LuHeart } from "react-icons/lu";
 import { GoPlus } from "react-icons/go";
 
-
 function Item({ id }) {
   const Dispatch = useDispatch();
   const [cunter, setcunter] = useState(1);
@@ -37,7 +36,7 @@ function Item({ id }) {
   };
   const children = Products.filter((item) => item.id == id).map((el) => {
     return (
-      <div  key={el.id}>
+      <div key={el.id}>
         <h1 className=" text-lg sm:text-2xl  font-medium text-max_color">
           {el.title}
         </h1>

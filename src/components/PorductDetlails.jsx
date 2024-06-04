@@ -10,7 +10,6 @@ import Testing from "./Testing";
 import { useParams, Link } from "react-router-dom";
 import Heading from "./Heading";
 import { Maxitems } from "../constants";
-
 import handleHeartClick from "../handleHeartClick";
 import { useNavigate } from "react-router-dom";
 function PorductDetlails() {
